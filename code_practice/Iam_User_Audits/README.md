@@ -21,11 +21,13 @@ Checking IAM user access keys...
 👤 amplify-admin | AKIA****B5THG | 0 days old | Status: Active
 👤 lotus-admin   | AKIA****JABA4 | 0 days old | Status: Active
 ------------------------------------------------------------
+```
 
 ## Requirements
 
 AWS CLI configured with valid profile
 `boto3` installed 
+
 ```
 pip install boto3
 ```
