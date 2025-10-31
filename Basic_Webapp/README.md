@@ -19,3 +19,7 @@ This lab demonstrates how to build a **full-stack web application** using **AWS 
 - **AWS AppSync** – GraphQL API integration between frontend and backend.  
 - **AWS Lambda** – Serverless backend logic for user events.  
 - **Amazon DynamoDB** – NoSQL database for storing user and app data.  
+
+
+<img width="875" height="380" alt="image" src="https://github.com/user-attachments/assets/734a4a06-0f8e-4154-91ff-7500af30776d" />
+
