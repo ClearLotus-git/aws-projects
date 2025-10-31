@@ -1,0 +1,38 @@
+import boto3
+from datetime import datetime, timezone
+
+import boto3
+from datetime import datetime, timezone
+
+# Create session using your IAM profile
+session = boto3.Session(profile_name="amplify-admin")
+iam = session.client("iam")
+
+print("Checking IAM user access keys...\n")
+
+# List all IAM users
+users = iam.list_users()["Users"]
+
+if not users:
+    print("No IAM users found in this account.")
+else:
+    for user in users:
+        name = user["UserName"]
+        keys = iam.list_access_keys(UserName=name)["AccessKeyMetadata"]
+
+        if not keys:
+            print(f"ℹ  {name} has no access keys.")
+            continue
+
+        for key in keys:
+            key_id = key["AccessKeyId"]
+            created = key["CreateDate"]
+            age = (datetime.now(timezone.utc) - created).days
+            status = key["Status"]
+
+            print(f"👤 {name} |  {key_id} |  {age} days old | Status: {status}")
+
+            # Simple rule: flag any key older than 90 days
+            if age > 90:
+                print(f" {name}'s key is {age} days old — consider rotating.\n")
+        print("-" * 60)
